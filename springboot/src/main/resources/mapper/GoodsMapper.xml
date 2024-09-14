@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.GoodsMapper">
+
+    <sql id="Base_Column_List">
+        id,name,supplier_id,producer,descr,price,num,img,unit,pack,product_no,approve_no,status
+    </sql>
+
+    <select id="selectAll" resultType="com.example.entity.Goods">
+        select
+        goods.*, supplier.name as supplierName
+        from goods
+        left join supplier
+        on goods.supplier_id = supplier.id
+        <where>
+            <if test="id != null"> and goods.id = #{id}</if>
+            <if test="name != null"> and goods.name like concat('%', #{name}, '%')</if>
+            <if test="supplierName != null"> and goods.supplier.name like concat('%', #{supplierName}, '%')</if>
+            <if test="productNo != null"> and goods.product_no like concat('%', #{productNo}, '%')</if>
+            <if test="approveNo != null"> and goods.approve_no like concat('%', #{approveNo}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Goods">
+        select
+        <include refid="Base_Column_List" />
+        from goods
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from goods
+        where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.Goods" useGeneratedKeys="true">
+        insert into goods
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="supplierId != null">supplier_id,</if>
+            <if test="producer != null">producer,</if>
+            <if test="descr != null">descr,</if>
+            <if test="price != null">price,</if>
+            <if test="num != null">num,</if>
+            <if test="img != null">img,</if>
+            <if test="unit != null">unit,</if>
+            <if test="pack != null">pack,</if>
+            <if test="productNo != null">product_no,</if>
+            <if test="approveNo != null">approve_no,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="supplierId != null">#{supplierId},</if>
+            <if test="producer != null">#{producer},</if>
+            <if test="descr != null">#{descr},</if>
+            <if test="price != null">#{price},</if>
+            <if test="num != null">#{num},</if>
+            <if test="img != null">#{img},</if>
+            <if test="unit != null">#{unit},</if>
+            <if test="pack != null">#{pack},</if>
+            <if test="productNo != null">#{productNo},</if>
+            <if test="approveNo != null">#{approveNo},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.Goods">
+        update goods
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="supplierId != null">
+                supplier_id = #{supplierId},
+            </if>
+            <if test="producer != null">
+                producer = #{producer},
+            </if>
+            <if test="descr != null">
+                descr = #{descr},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="num != null">
+                num = #{num},
+            </if>
+            <if test="img != null">
+                img = #{img},
+            </if>
+            <if test="unit != null">
+                unit = #{unit},
+            </if>
+            <if test="pack != null">
+                pack = #{pack},
+            </if>
+            <if test="productNo != null">
+                product_no = #{productNo},
+            </if>
+            <if test="approveNo != null">
+                approve_no = #{approveNo},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

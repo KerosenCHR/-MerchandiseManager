@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SupplierMapper">
+
+    <sql id="Base_Column_List">
+        id,name,address,tel,email,zip_code,user,phone,bank,bank_card,status
+    </sql>
+
+    <select id="selectAll" resultType="com.example.entity.Supplier">
+        select
+        <include refid="Base_Column_List" />
+        from supplier
+        <where>
+            <if test="id != null"> and id = #{id}</if>
+            <if test="name != null"> and name like concat('%', #{name}, '%')</if>
+            <if test="address != null"> and address like concat('%', #{address}, '%')</if>
+            <if test="tel != null"> and tel like concat('%', #{tel}, '%')</if>
+            <if test="email != null"> and email like concat('%', #{email}, '%')</if>
+            <if test="zipCode != null"> and zip_code like concat('%', #{zipCode}, '%')</if>
+            <if test="user != null"> and user like concat('%', #{user}, '%')</if>
+            <if test="phone != null"> and phone like concat('%', #{phone}, '%')</if>
+            <if test="bank != null"> and bank like concat('%', #{bank}, '%')</if>
+            <if test="bankCard != null"> and bank_card like concat('%', #{bankCard}, '%')</if>
+            <if test="status != null"> and status like concat('%', #{status}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.Supplier">
+        select
+        <include refid="Base_Column_List" />
+        from supplier
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from supplier
+        where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.Supplier" useGeneratedKeys="true">
+        insert into supplier
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="address != null">address,</if>
+            <if test="tel != null">tel,</if>
+            <if test="email != null">email,</if>
+            <if test="zipCode != null">zip_code,</if>
+            <if test="user != null">user,</if>
+            <if test="phone != null">phone,</if>
+            <if test="bank != null">bank,</if>
+            <if test="bankCard != null">bank_card,</if>
+            <if test="status != null">status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="address != null">#{address},</if>
+            <if test="tel != null">#{tel},</if>
+            <if test="email != null">#{email},</if>
+            <if test="zipCode != null">#{zipCode},</if>
+            <if test="user != null">#{user},</if>
+            <if test="phone != null">#{phone},</if>
+            <if test="bank != null">#{bank},</if>
+            <if test="bankCard != null">#{bankCard},</if>
+            <if test="status != null">#{status},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.Supplier">
+        update supplier
+        <set>
+            <if test="name != null">
+                name = #{name},
+            </if>
+            <if test="address != null">
+                address = #{address},
+            </if>
+            <if test="tel != null">
+                tel = #{tel},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="zipCode != null">
+                zip_code = #{zipCode},
+            </if>
+            <if test="user != null">
+                user = #{user},
+            </if>
+            <if test="phone != null">
+                phone = #{phone},
+            </if>
+            <if test="bank != null">
+                bank = #{bank},
+            </if>
+            <if test="bankCard != null">
+                bank_card = #{bankCard},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>
