@@ -129,7 +129,7 @@
 
 <script>
 export default {
-  name: "Notice",
+  name: "Goods",
   data() {
     return {
       tableData: [],  // 所有的数据

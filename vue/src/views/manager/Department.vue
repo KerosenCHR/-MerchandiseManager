@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: "Notice",
+  name: "Department",
   data() {
     return {
       tableData: [],  // 所有的数据

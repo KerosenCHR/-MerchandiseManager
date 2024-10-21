@@ -100,7 +100,7 @@
 
 <script>
 export default {
-  name: "Notice",
+  name: "Customer",
   data() {
     return {
       tableData: [],  // 所有的数据

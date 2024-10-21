@@ -28,6 +28,7 @@ const routes = [
       { path: 'supplier', name: 'Supplier', meta: { name: '供应商信息' }, component: () => import('../views/manager/Supplier') },
       { path: 'customer', name: 'Customer', meta: { name: '客户信息' }, component: () => import('../views/manager/Customer') },
       { path: 'goods', name: 'Goods', meta: { name: '商品信息' }, component: () => import('../views/manager/Goods') },
+      { path: 'stock', name: 'Stock', meta: { name: '商品进货信息' }, component: () => import('../views/manager/Stock') },
     ]
   },
   {

@@ -105,7 +105,7 @@
 
 <script>
 export default {
-  name: "Notice",
+  name: "Supplier",
   data() {
     return {
       tableData: [],  // 所有的数据
