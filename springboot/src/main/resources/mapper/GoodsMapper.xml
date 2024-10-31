@@ -16,6 +16,7 @@
         on goods.supplier_id = supplier.id
         <where>
             <if test="id != null"> and goods.id = #{id}</if>
+            <if test="supplierId != null"> and goods.supplier_id = #{supplierId}</if>
             <if test="name != null"> and goods.name like concat('%', #{name}, '%')</if>
             <if test="supplierName != null"> and goods.supplier.name like concat('%', #{supplierName}, '%')</if>
             <if test="productNo != null"> and goods.product_no like concat('%', #{productNo}, '%')</if>

@@ -1,16 +1,15 @@
 package com.example.service;
 
 import com.example.entity.Account;
-import com.example.entity.Goods;
 import com.example.entity.Stock;
 import com.example.mapper.StockMapper;
 import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -30,6 +29,9 @@ public class StockService {
      */
     @Transactional
     public void add(Stock stock) {
+        Account currentUser = TokenUtils.getCurrentUser();
+        stock.setUser(currentUser.getName());
+        stock.setTotal(stock.getPrice() * stock.getNum());
         stockMapper.insert(stock);
     }
 
@@ -53,6 +55,7 @@ public class StockService {
      * 修改
      */
     public void updateById(Stock stock) {
+        stock.setTotal(stock.getPrice() * stock.getNum());
         stockMapper.updateById(stock);
     }
 

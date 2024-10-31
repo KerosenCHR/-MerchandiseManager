@@ -10,10 +10,16 @@
 
     <select id="selectAll" resultType="com.example.entity.Stock">
         select
-        <include refid="Base_Column_List" />
+            stock.*, supplier.name as supplierName, goods.name as goodsName
         from stock
+        left join supplier
+            on stock.supplier_id = supplier.id
+        left join goods
+            on stock.goods_id = goods.id
         <where>
             <if test="id != null"> and id = #{id}</if>
+            <if test="supplierName != null"> and supplier.name like concat('%', #{supplierName}, '%')</if>
+            <if test="goodsName != null"> and goods.name like concat('%', #{goodsName}, '%')</if>
         </where>
         order by id desc
     </select>

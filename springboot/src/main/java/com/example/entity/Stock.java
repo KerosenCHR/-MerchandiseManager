@@ -30,6 +30,10 @@ public class Stock implements Serializable {
     private Double total;
     /** 备注 */
     private String comment;
+    /** 供应商名称 */
+    private String supplierName;
+    /** 商品名称 */
+    private String goodsName;
 
     public Integer getId() {
         return id;
@@ -119,4 +123,19 @@ public class Stock implements Serializable {
         this.comment = comment;
     }
 
+    public String getSupplierName() {
+        return supplierName;
+    }
+
+    public void setSupplierName(String supplierName) {
+        this.supplierName = supplierName;
+    }
+
+    public String getGoodsName() {
+        return goodsName;
+    }
+
+    public void setGoodsName(String goodsName) {
+        this.goodsName = goodsName;
+    }
 }

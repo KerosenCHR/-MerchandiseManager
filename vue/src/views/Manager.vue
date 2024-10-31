@@ -33,7 +33,7 @@
     <div class="manager-main">
       <!--  侧边栏  -->
       <div class="manager-main-left">
-        <el-menu :default-openeds="['info', 'user']" router style="border: none" :default-active="$route.path">
+        <el-menu :default-openeds="['info', 'user', 'stockManager']" router style="border: none" :default-active="$route.path">
           <el-menu-item index="/home">
             <i class="el-icon-s-home"></i>
             <span slot="title">系统首页</span>
@@ -51,7 +51,7 @@
               <i class="el-icon-menu"></i><span>商品进货管理</span>
             </template>
             <el-menu-item index="/stock">商品进货</el-menu-item>
-            <el-menu-item index="/goods">销售退货</el-menu-item>
+<!--            <el-menu-item index="/goods">销售退货</el-menu-item>-->
           </el-submenu>
           <el-submenu index="info">
             <template slot="title">

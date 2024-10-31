@@ -70,6 +70,7 @@ public class Goods implements Serializable {
      */
     @Alias("批准文号")
     private String approveNo;
+
     @Alias("状态")
     private String status;
 
@@ -100,9 +101,7 @@ public class Goods implements Serializable {
         this.name = name;
     }
 
-    public Integer getSupplierId() {
-        return supplierId;
-    }
+    public Integer getSupplierId() { return supplierId; }
 
     public void setSupplierId(Integer supplierId) {
         this.supplierId = supplierId;
