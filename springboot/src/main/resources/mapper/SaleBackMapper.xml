@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.SaleBackMapper">
+
+    <sql id="Base_Column_List">
+        id,customer_id,goods_id,pay_type,time,user,price,num,unit,total,comment
+    </sql>
+
+    <select id="selectAll" resultType="com.example.entity.SaleBack">
+        select
+        sale_back.*, customer.name as customerName, goods.name as goodsName
+        from sale_back
+        left join customer
+        on sale_back.customer_id = customer.id
+        left join goods
+        on sale_back.goods_id = goods.id
+        <where>
+            <if test="id != null"> and sale_back.id = #{id}</if>
+            <if test="customerName != null"> and customer.name like concat('%', #{customerName}, '%')</if>
+            <if test="goodsName != null"> and goods.name like concat('%', #{goodsName}, '%')</if>
+        </where>
+        order by id desc
+    </select>
+
+    <select id="selectById" resultType="com.example.entity.SaleBack">
+        select
+        <include refid="Base_Column_List" />
+        from sale_back
+        where id = #{id}
+    </select>
+
+    <delete id="deleteById">
+        delete from sale_back
+        where  id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="com.example.entity.SaleBack" useGeneratedKeys="true">
+        insert into sale_back
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="customerId != null">customer_id,</if>
+            <if test="goodsId != null">goods_id,</if>
+            <if test="payType != null">pay_type,</if>
+            <if test="time != null">time,</if>
+            <if test="user != null">user,</if>
+            <if test="price != null">price,</if>
+            <if test="num != null">num,</if>
+            <if test="unit != null">unit,</if>
+            <if test="total != null">total,</if>
+            <if test="comment != null">comment,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="customerId != null">#{customerId},</if>
+            <if test="goodsId != null">#{goodsId},</if>
+            <if test="payType != null">#{payType},</if>
+            <if test="time != null">#{time},</if>
+            <if test="user != null">#{user},</if>
+            <if test="price != null">#{price},</if>
+            <if test="num != null">#{num},</if>
+            <if test="unit != null">#{unit},</if>
+            <if test="total != null">#{total},</if>
+            <if test="comment != null">#{comment},</if>
+        </trim>
+    </insert>
+
+    <update id="updateById" parameterType="com.example.entity.SaleBack">
+        update sale_back
+        <set>
+            <if test="customerId != null">
+                customer_id = #{customerId},
+            </if>
+            <if test="goodsId != null">
+                goods_id = #{goodsId},
+            </if>
+            <if test="payType != null">
+                pay_type = #{payType},
+            </if>
+            <if test="time != null">
+                time = #{time},
+            </if>
+            <if test="user != null">
+                user = #{user},
+            </if>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="num != null">
+                num = #{num},
+            </if>
+            <if test="unit != null">
+                unit = #{unit},
+            </if>
+            <if test="total != null">
+                total = #{total},
+            </if>
+            <if test="comment != null">
+                comment = #{comment},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+</mapper>

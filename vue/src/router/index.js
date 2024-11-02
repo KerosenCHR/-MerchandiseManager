@@ -29,6 +29,7 @@ const routes = [
       { path: 'customer', name: 'Customer', meta: { name: '客户信息' }, component: () => import('../views/manager/Customer') },
       { path: 'goods', name: 'Goods', meta: { name: '商品信息' }, component: () => import('../views/manager/Goods') },
       { path: 'stock', name: 'Stock', meta: { name: '商品进货信息' }, component: () => import('../views/manager/Stock') },
+      { path: 'back', name: 'Back', meta: { name: '商品退货查询' }, component: () => import('../views/manager/Back') },
     ]
   },
   {

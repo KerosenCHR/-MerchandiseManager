@@ -1004,7 +1004,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </schema>
     <schema id="291" parent="1" name="psi_manager">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2024-09-14.18:27:44</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2024-11-02.11:38:54</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </schema>
     <schema id="292" parent="1" name="sys">
@@ -1042,527 +1042,790 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="300" parent="291" name="customer">
+    <table id="300" parent="291" name="back">
+      <Comment>商品退货</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="301" parent="291" name="customer">
       <Comment>客户表</Comment>
       <Engine>InnoDB</Engine>
       <Options>row_format
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="301" parent="291" name="department">
+    <table id="302" parent="291" name="department">
       <Comment>部门表</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="302" parent="291" name="goods">
+    <table id="303" parent="291" name="goods">
       <Comment>商品表</Comment>
       <Engine>InnoDB</Engine>
       <Options>row_format
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="303" parent="291" name="notice">
+    <table id="304" parent="291" name="logs">
+      <Comment>日志表</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="305" parent="291" name="notice">
       <Comment>公告信息表</Comment>
       <Engine>InnoDB</Engine>
       <Options>row_format
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="304" parent="291" name="staff">
+    <table id="306" parent="291" name="sale">
+      <Comment>商品销售</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="307" parent="291" name="sale_back">
+      <Comment>商品销售</Comment>
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_unicode_ci</CollationName>
+    </table>
+    <table id="308" parent="291" name="staff">
       <Comment>管理员</Comment>
       <Engine>InnoDB</Engine>
       <Options>row_format
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="305" parent="291" name="stock">
+    <table id="309" parent="291" name="stock">
       <Comment>商品进货</Comment>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <table id="306" parent="291" name="supplier">
+    <table id="310" parent="291" name="supplier">
       <Comment>供应商表</Comment>
       <Engine>InnoDB</Engine>
       <Options>row_format
 DYNAMIC</Options>
       <CollationName>utf8mb4_unicode_ci</CollationName>
     </table>
-    <column id="307" parent="299" name="id">
+    <column id="311" parent="299" name="id">
       <AutoIncrement>2</AutoIncrement>
       <Comment>ID</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="308" parent="299" name="username">
+    <column id="312" parent="299" name="username">
       <Comment>用户名</Comment>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="309" parent="299" name="password">
+    <column id="313" parent="299" name="password">
       <Comment>密码</Comment>
       <Position>3</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="310" parent="299" name="name">
+    <column id="314" parent="299" name="name">
       <Comment>姓名</Comment>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="311" parent="299" name="avatar">
+    <column id="315" parent="299" name="avatar">
       <Comment>头像</Comment>
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="312" parent="299" name="role">
+    <column id="316" parent="299" name="role">
       <Comment>角色标识</Comment>
       <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="313" parent="299" name="phone">
+    <column id="317" parent="299" name="phone">
       <Comment>电话</Comment>
       <Position>7</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="314" parent="299" name="email">
+    <column id="318" parent="299" name="email">
       <Comment>邮箱</Comment>
       <Position>8</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="315" parent="299" name="PRIMARY">
+    <index id="319" parent="299" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="316" parent="299" name="PRIMARY">
+    <key id="320" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="317" parent="300" name="id">
-      <AutoIncrement>6</AutoIncrement>
-      <Comment>ID</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="318" parent="300" name="name">
-      <Comment>客户名称</Comment>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="319" parent="300" name="address">
-      <Comment>客户地址</Comment>
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="320" parent="300" name="tel">
-      <Comment>客户电话</Comment>
-      <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="321" parent="300" name="email">
-      <Comment>客户邮箱</Comment>
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="322" parent="300" name="zip_code">
-      <Comment>客户邮编</Comment>
-      <Position>6</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="323" parent="300" name="user">
-      <Comment>联系人</Comment>
-      <Position>7</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="324" parent="300" name="phone">
-      <Comment>联系人电话</Comment>
-      <Position>8</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="325" parent="300" name="bank">
-      <Comment>开户银行</Comment>
-      <Position>9</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="326" parent="300" name="bank_card">
-      <Comment>开户行账号</Comment>
-      <Position>10</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="327" parent="300" name="status">
-      <Comment>状态</Comment>
-      <DefaultExpression>&apos;可用&apos;</DefaultExpression>
-      <Position>11</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <index id="328" parent="300" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="329" parent="300" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="330" parent="301" name="id">
-      <AutoIncrement>7</AutoIncrement>
-      <Comment>ID</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="331" parent="301" name="name">
-      <Comment>名称</Comment>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="332" parent="301" name="address">
-      <Comment>部门地址</Comment>
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="333" parent="301" name="pid">
-      <Comment>父级ID</Comment>
-      <Position>4</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="334" parent="301" name="level">
-      <Comment>层级</Comment>
-      <Position>5</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <index id="335" parent="301" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="336" parent="301" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="337" parent="302" name="id">
-      <AutoIncrement>10</AutoIncrement>
-      <Comment>ID</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="338" parent="302" name="name">
-      <Comment>商品名称</Comment>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="339" parent="302" name="supplier_id">
-      <Comment>供应商ID</Comment>
-      <Position>3</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="340" parent="302" name="producer">
-      <Comment>商品产地</Comment>
-      <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="341" parent="302" name="descr">
-      <Comment>商品描述</Comment>
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="342" parent="302" name="price">
-      <Comment>销售价格</Comment>
-      <Position>6</Position>
-      <StoredType>double(10,2 digit)|0s</StoredType>
-    </column>
-    <column id="343" parent="302" name="num">
-      <Comment>数量</Comment>
-      <Position>7</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="344" parent="302" name="unit">
-      <Comment>商品规格</Comment>
-      <Position>8</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="345" parent="302" name="pack">
-      <Comment>包装单位</Comment>
-      <Position>9</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="346" parent="302" name="img">
-      <Comment>商品图片</Comment>
-      <Position>10</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="347" parent="302" name="product_no">
-      <Comment>生产批号</Comment>
-      <Position>11</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="348" parent="302" name="approve_no">
-      <Comment>批准文号</Comment>
-      <Position>12</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="349" parent="302" name="status">
-      <Comment>状态</Comment>
-      <DefaultExpression>&apos;可用&apos;</DefaultExpression>
-      <Position>13</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <index id="350" parent="302" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="351" parent="302" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="352" parent="303" name="id">
-      <AutoIncrement>4</AutoIncrement>
-      <Comment>ID</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="353" parent="303" name="title">
-      <Comment>标题</Comment>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="354" parent="303" name="content">
-      <Comment>内容</Comment>
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="355" parent="303" name="time">
-      <Comment>创建时间</Comment>
-      <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="356" parent="303" name="user">
-      <Comment>创建人</Comment>
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <index id="357" parent="303" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="358" parent="303" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="359" parent="304" name="id">
-      <AutoIncrement>5</AutoIncrement>
-      <Comment>ID</Comment>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="360" parent="304" name="username">
-      <Comment>用户名</Comment>
-      <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="361" parent="304" name="password">
-      <Comment>密码</Comment>
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="362" parent="304" name="name">
-      <Comment>姓名</Comment>
-      <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="363" parent="304" name="avatar">
-      <Comment>头像</Comment>
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="364" parent="304" name="role">
-      <Comment>角色标识</Comment>
-      <Position>6</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="365" parent="304" name="sex">
-      <Comment>性别</Comment>
-      <Position>7</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="366" parent="304" name="phone">
-      <Comment>电话</Comment>
-      <Position>8</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="367" parent="304" name="email">
-      <Comment>邮箱</Comment>
-      <Position>9</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="368" parent="304" name="birth">
-      <Comment>出生年月</Comment>
-      <Position>10</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="369" parent="304" name="department_id">
-      <Comment>所属部门ID</Comment>
-      <Position>11</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="370" parent="304" name="status">
-      <Comment>禁用状态</Comment>
-      <DefaultExpression>0</DefaultExpression>
-      <Position>12</Position>
-      <StoredType>tinyint(1)|0s</StoredType>
-    </column>
-    <index id="371" parent="304" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <key id="372" parent="304" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="373" parent="305" name="id">
+    <column id="321" parent="300" name="id">
       <AutoIncrement>1</AutoIncrement>
       <Comment>ID</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="374" parent="305" name="supplier_id">
+    <column id="322" parent="300" name="supplier_id">
       <Comment>供应商ID</Comment>
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="375" parent="305" name="goods_id">
+    <column id="323" parent="300" name="goods_id">
       <Comment>商品ID</Comment>
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="376" parent="305" name="pay_type">
+    <column id="324" parent="300" name="pay_type">
       <Comment>支付类型</Comment>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="377" parent="305" name="time">
-      <Comment>进货时间</Comment>
+    <column id="325" parent="300" name="time">
+      <Comment>退货时间</Comment>
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="378" parent="305" name="user">
+    <column id="326" parent="300" name="user">
       <Comment>操作人</Comment>
       <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="379" parent="305" name="num">
-      <Comment>进货数量</Comment>
+    <column id="327" parent="300" name="num">
+      <Comment>退货数量</Comment>
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="380" parent="305" name="unit">
+    <column id="328" parent="300" name="unit">
       <Comment>商品规格</Comment>
       <Position>8</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="381" parent="305" name="price">
-      <Comment>进货价格</Comment>
+    <column id="329" parent="300" name="price">
+      <Comment>退货价格</Comment>
       <Position>9</Position>
       <StoredType>double(10,2 digit)|0s</StoredType>
     </column>
-    <column id="382" parent="305" name="total">
-      <Comment>进货总价格</Comment>
+    <column id="330" parent="300" name="total">
+      <Comment>退货总价格</Comment>
       <Position>10</Position>
       <StoredType>double(10,2 digit)|0s</StoredType>
     </column>
-    <column id="383" parent="305" name="comment">
+    <column id="331" parent="300" name="comment">
       <Comment>备注</Comment>
       <Position>11</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="384" parent="305" name="PRIMARY">
+    <index id="332" parent="300" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="385" parent="305" name="PRIMARY">
+    <key id="333" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="386" parent="306" name="id">
+    <column id="334" parent="301" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="335" parent="301" name="name">
+      <Comment>客户名称</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="336" parent="301" name="address">
+      <Comment>客户地址</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="337" parent="301" name="tel">
+      <Comment>客户电话</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="338" parent="301" name="email">
+      <Comment>客户邮箱</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="339" parent="301" name="zip_code">
+      <Comment>客户邮编</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="340" parent="301" name="user">
+      <Comment>联系人</Comment>
+      <Position>7</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="341" parent="301" name="phone">
+      <Comment>联系人电话</Comment>
+      <Position>8</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="342" parent="301" name="bank">
+      <Comment>开户银行</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="343" parent="301" name="bank_card">
+      <Comment>开户行账号</Comment>
+      <Position>10</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="344" parent="301" name="status">
+      <Comment>状态</Comment>
+      <DefaultExpression>&apos;可用&apos;</DefaultExpression>
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="345" parent="301" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="346" parent="301" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="347" parent="302" name="id">
+      <AutoIncrement>7</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="348" parent="302" name="name">
+      <Comment>名称</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="349" parent="302" name="address">
+      <Comment>部门地址</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="350" parent="302" name="pid">
+      <Comment>父级ID</Comment>
+      <Position>4</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="351" parent="302" name="level">
+      <Comment>层级</Comment>
+      <Position>5</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <index id="352" parent="302" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="353" parent="302" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="354" parent="303" name="id">
+      <AutoIncrement>10</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="355" parent="303" name="name">
+      <Comment>商品名称</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="356" parent="303" name="supplier_id">
+      <Comment>供应商ID</Comment>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="357" parent="303" name="producer">
+      <Comment>商品产地</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="358" parent="303" name="descr">
+      <Comment>商品描述</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="359" parent="303" name="price">
+      <Comment>销售价格</Comment>
+      <Position>6</Position>
+      <StoredType>double(10,2 digit)|0s</StoredType>
+    </column>
+    <column id="360" parent="303" name="num">
+      <Comment>数量</Comment>
+      <Position>7</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="361" parent="303" name="unit">
+      <Comment>商品规格</Comment>
+      <Position>8</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="362" parent="303" name="pack">
+      <Comment>包装单位</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="363" parent="303" name="img">
+      <Comment>商品图片</Comment>
+      <Position>10</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="364" parent="303" name="product_no">
+      <Comment>生产批号</Comment>
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="365" parent="303" name="approve_no">
+      <Comment>批准文号</Comment>
+      <Position>12</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="366" parent="303" name="status">
+      <Comment>状态</Comment>
+      <DefaultExpression>&apos;可用&apos;</DefaultExpression>
+      <Position>13</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="367" parent="303" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="368" parent="303" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="369" parent="304" name="id">
+      <AutoIncrement>27</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="370" parent="304" name="operation">
+      <Comment>操作</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="371" parent="304" name="username">
+      <Comment>操作人</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(11)|0s</StoredType>
+    </column>
+    <column id="372" parent="304" name="type">
+      <Comment>类型</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="373" parent="304" name="ip">
+      <Comment>IP地址</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="374" parent="304" name="time">
+      <Comment>操作时间</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="375" parent="304" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="376" parent="304" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="377" parent="305" name="id">
+      <AutoIncrement>4</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="378" parent="305" name="title">
+      <Comment>标题</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="379" parent="305" name="content">
+      <Comment>内容</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="380" parent="305" name="time">
+      <Comment>创建时间</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="381" parent="305" name="user">
+      <Comment>创建人</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="382" parent="305" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="383" parent="305" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="384" parent="306" name="id">
+      <AutoIncrement>9</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="385" parent="306" name="customer_id">
+      <Comment>客户ID</Comment>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="386" parent="306" name="goods_id">
+      <Comment>商品ID</Comment>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="387" parent="306" name="pay_type">
+      <Comment>支付类型</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="388" parent="306" name="time">
+      <Comment>销售时间</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="389" parent="306" name="user">
+      <Comment>操作人</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="390" parent="306" name="price">
+      <Comment>销售单价</Comment>
+      <Position>7</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="391" parent="306" name="num">
+      <Comment>销售数量</Comment>
+      <Position>8</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="392" parent="306" name="unit">
+      <Comment>商品规格</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="393" parent="306" name="total">
+      <Comment>销售总价</Comment>
+      <Position>10</Position>
+      <StoredType>double(10,2 digit)|0s</StoredType>
+    </column>
+    <column id="394" parent="306" name="comment">
+      <Comment>备注</Comment>
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="395" parent="306" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="396" parent="306" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="397" parent="307" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="398" parent="307" name="customer_id">
+      <Comment>客户ID</Comment>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="399" parent="307" name="goods_id">
+      <Comment>商品ID</Comment>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="400" parent="307" name="pay_type">
+      <Comment>支付类型</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="401" parent="307" name="time">
+      <Comment>退货时间</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="402" parent="307" name="user">
+      <Comment>操作人</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="403" parent="307" name="price">
+      <Comment>退货单价</Comment>
+      <Position>7</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="404" parent="307" name="num">
+      <Comment>退货数量</Comment>
+      <Position>8</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="405" parent="307" name="unit">
+      <Comment>商品规格</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="406" parent="307" name="total">
+      <Comment>退货总价</Comment>
+      <Position>10</Position>
+      <StoredType>double(10,2 digit)|0s</StoredType>
+    </column>
+    <column id="407" parent="307" name="comment">
+      <Comment>备注</Comment>
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="408" parent="307" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="409" parent="307" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="410" parent="308" name="id">
+      <AutoIncrement>6</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="411" parent="308" name="username">
+      <Comment>用户名</Comment>
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="412" parent="308" name="password">
+      <Comment>密码</Comment>
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="413" parent="308" name="name">
+      <Comment>姓名</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="414" parent="308" name="avatar">
+      <Comment>头像</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="415" parent="308" name="role">
+      <Comment>角色标识</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="416" parent="308" name="sex">
+      <Comment>性别</Comment>
+      <Position>7</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="417" parent="308" name="phone">
+      <Comment>电话</Comment>
+      <Position>8</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="418" parent="308" name="email">
+      <Comment>邮箱</Comment>
+      <Position>9</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="419" parent="308" name="birth">
+      <Comment>出生年月</Comment>
+      <Position>10</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="420" parent="308" name="department_id">
+      <Comment>所属部门ID</Comment>
+      <Position>11</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="421" parent="308" name="status">
+      <Comment>禁用状态</Comment>
+      <DefaultExpression>0</DefaultExpression>
+      <Position>12</Position>
+      <StoredType>tinyint(1)|0s</StoredType>
+    </column>
+    <index id="422" parent="308" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="423" parent="308" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="424" parent="309" name="id">
+      <AutoIncrement>4</AutoIncrement>
+      <Comment>ID</Comment>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="425" parent="309" name="supplier_id">
+      <Comment>供应商ID</Comment>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="426" parent="309" name="goods_id">
+      <Comment>商品ID</Comment>
+      <Position>3</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="427" parent="309" name="pay_type">
+      <Comment>支付类型</Comment>
+      <Position>4</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="428" parent="309" name="time">
+      <Comment>进货时间</Comment>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="429" parent="309" name="user">
+      <Comment>操作人</Comment>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="430" parent="309" name="num">
+      <Comment>进货数量</Comment>
+      <Position>7</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="431" parent="309" name="unit">
+      <Comment>商品规格</Comment>
+      <Position>8</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="432" parent="309" name="price">
+      <Comment>进货价格</Comment>
+      <Position>9</Position>
+      <StoredType>double(10,2 digit)|0s</StoredType>
+    </column>
+    <column id="433" parent="309" name="total">
+      <Comment>进货总价格</Comment>
+      <Position>10</Position>
+      <StoredType>double(10,2 digit)|0s</StoredType>
+    </column>
+    <column id="434" parent="309" name="comment">
+      <Comment>备注</Comment>
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="435" parent="309" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="436" parent="309" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="437" parent="310" name="id">
       <AutoIncrement>8</AutoIncrement>
       <Comment>ID</Comment>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="387" parent="306" name="name">
+    <column id="438" parent="310" name="name">
       <Comment>供应商名称</Comment>
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="388" parent="306" name="address">
+    <column id="439" parent="310" name="address">
       <Comment>供应商地址</Comment>
       <Position>3</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="389" parent="306" name="tel">
+    <column id="440" parent="310" name="tel">
       <Comment>供应商电话</Comment>
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="390" parent="306" name="email">
+    <column id="441" parent="310" name="email">
       <Comment>供应商邮箱</Comment>
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="391" parent="306" name="zip_code">
+    <column id="442" parent="310" name="zip_code">
       <Comment>邮编</Comment>
       <Position>6</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="392" parent="306" name="user">
+    <column id="443" parent="310" name="user">
       <Comment>联系人</Comment>
       <Position>7</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="393" parent="306" name="phone">
+    <column id="444" parent="310" name="phone">
       <Comment>联系人电话</Comment>
       <Position>8</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="394" parent="306" name="bank">
+    <column id="445" parent="310" name="bank">
       <Comment>开户银行</Comment>
       <Position>9</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="395" parent="306" name="bank_card">
+    <column id="446" parent="310" name="bank_card">
       <Comment>开户行账号</Comment>
       <Position>10</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="396" parent="306" name="status">
+    <column id="447" parent="310" name="status">
       <Comment>状态</Comment>
       <DefaultExpression>&apos;可用&apos;</DefaultExpression>
       <Position>11</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="397" parent="306" name="PRIMARY">
+    <index id="448" parent="310" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="398" parent="306" name="PRIMARY">
+    <key id="449" parent="310" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

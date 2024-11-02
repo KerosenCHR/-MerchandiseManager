@@ -51,7 +51,7 @@
               <i class="el-icon-menu"></i><span>商品进货管理</span>
             </template>
             <el-menu-item index="/stock">商品进货</el-menu-item>
-<!--            <el-menu-item index="/goods">销售退货</el-menu-item>-->
+            <el-menu-item index="/back">商品退货查询</el-menu-item>
           </el-submenu>
           <el-submenu index="info">
             <template slot="title">

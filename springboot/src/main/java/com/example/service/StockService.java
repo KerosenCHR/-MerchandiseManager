@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.entity.Account;
+import com.example.entity.Goods;
 import com.example.entity.Stock;
 import com.example.mapper.StockMapper;
 import com.example.utils.TokenUtils;
@@ -32,6 +33,12 @@ public class StockService {
         Account currentUser = TokenUtils.getCurrentUser();
         stock.setUser(currentUser.getName());
         stock.setTotal(stock.getPrice() * stock.getNum());
+
+        //查询进货的商品信息
+        Goods goods = goodsService.selectById(stock.getGoodsId());
+        goods.setNum(goods.getNum() + stock.getNum());
+        goodsService.updateById(goods);
+
         stockMapper.insert(stock);
     }
 
