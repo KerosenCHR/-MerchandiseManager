@@ -1,16 +1,16 @@
 package com.example.service;
 
 import com.example.common.enums.ResultCodeEnum;
-import com.example.entity.Account;
 import com.example.entity.Goods;
 import com.example.entity.SaleBack;
 import com.example.exception.CustomException;
 import com.example.mapper.SaleBackMapper;
-import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -22,10 +22,21 @@ public class SaleBackService {
     @Resource
     private SaleBackMapper saleBackMapper;
 
+    @Resource
+    private GoodsService goodsService;
+
     /**
      * 新增
      */
+    @Transactional
     public void add(SaleBack saleBack) {
+        Goods goods = goodsService.selectById(saleBack.getGoodsId());
+        int num = goods.getNum() + saleBack.getNum();
+        if (num < 0) {
+            throw new CustomException(ResultCodeEnum.GOODS_NUM_LIMITED);
+        }
+        goods.setNum(goods.getNum() + saleBack.getNum());  // 销售退货  增加库存
+        goodsService.updateById(goods);
         saleBackMapper.insert(saleBack);
     }
 

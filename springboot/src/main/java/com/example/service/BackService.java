@@ -1,7 +1,9 @@
 package com.example.service;
 
+import com.example.common.enums.ResultCodeEnum;
 import com.example.entity.Back;
 import com.example.entity.Goods;
+import com.example.exception.CustomException;
 import com.example.mapper.BackMapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -30,6 +32,10 @@ public class BackService {
     @Transactional
     public void add(Back back) {
         Goods goods = goodsService.selectById(back.getGoodsId());
+        int num = goods.getNum() - back.getNum();
+        if (num < 0) {
+            throw new CustomException(ResultCodeEnum.GOODS_NUM_LIMITED);
+        }
         goods.setNum(goods.getNum() - back.getNum());
         goodsService.updateById(goods);
         backMapper.insert(back);

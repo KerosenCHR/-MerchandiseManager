@@ -1,7 +1,12 @@
 package com.example.service;
 
+import com.example.common.enums.ResultCodeEnum;
+import com.example.entity.Account;
+import com.example.entity.Goods;
 import com.example.entity.Sale;
+import com.example.exception.CustomException;
 import com.example.mapper.SaleMapper;
+import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -27,7 +32,20 @@ public class SaleService {
      */
     @Transactional
     public void add(Sale sale) {
+        Account currentUser = TokenUtils.getCurrentUser();
+        sale.setUser(currentUser.getName());
+        sale.setTotal(sale.getNum() * sale.getPrice());
+
+        //商品减库存
+        Goods goods = goodsService.selectById(sale.getGoodsId());
+        int num = goods.getNum() - sale.getNum();
+        if (num < 0) {
+            throw new CustomException(ResultCodeEnum.GOODS_NUM_LIMITED);
+        }
+
+        goods.setNum(goods.getNum() - sale.getNum());
         saleMapper.insert(sale);
+        goodsService.updateById(goods);
     }
 
     /**
@@ -50,6 +68,7 @@ public class SaleService {
      * 修改
      */
     public void updateById(Sale sale) {
+        sale.setTotal(sale.getNum() * sale.getPrice());
         saleMapper.updateById(sale);
     }
 
