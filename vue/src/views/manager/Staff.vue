@@ -2,6 +2,7 @@
   <div>
     <div class="search">
       <el-input placeholder="请输入账号查询" style="width: 200px" v-model="username"></el-input>
+      <el-input placeholder="请输入部门查询" style="width: 200px; margin-left: 10px" v-model="departmentName"></el-input>
       <el-button type="info" plain style="margin-left: 10px" @click="load(1)">查询</el-button>
       <el-button type="warning" plain style="margin-left: 10px" @click="reset">重置</el-button>
     </div>
@@ -29,7 +30,7 @@
         <el-table-column prop="email" label="邮箱"></el-table-column>
         <el-table-column prop="sex" label="性别"></el-table-column>
         <el-table-column prop="birth" label="生日"></el-table-column>
-        <el-table-column prop="departmentId" label="部门ID"></el-table-column>
+        <el-table-column prop="departmentName" label="部门名称"></el-table-column>
         <el-table-column prop="status" label="禁用">
           <template v-slot="scope">
             <el-switch v-model="scope.row.status" active-color="#ff4949" inactive-color="#aaa" @change="changeStatus(scope.row)"></el-switch>
@@ -94,7 +95,21 @@
                           v-model="form.birth" style="width: 100%"></el-date-picker>
         </el-form-item>
         <el-form-item label="部门" prop="departmentId">
-          <el-input v-model="form.departmentId" placeholder="部门"></el-input>
+          <el-select ref="selectTree" v-model="form.departmentId" clearable style="width: 100%;">
+            <el-option
+                v-for="(item, index) in departmentList"
+                :key="index"
+                :label="item.name"
+                :value="item.id"
+                style="display: none;"/>
+
+            <el-tree
+                :data="departmentList"
+                :props="{children: 'children', label: 'name'}"
+                highlight-current
+                @node-click="handleNodeClick"
+                default-expand-all />
+          </el-select>
         </el-form-item>
         <el-form-item label="禁用" prop="status">
           <el-switch v-model="form.status" active-color="#ff4949" inactive-color="#aaa"></el-switch>
@@ -116,11 +131,13 @@ export default {
   name: "Staff",
   data() {
     return {
-      tableData: [],  // 所有的数据
+      departmentTree: [],  // 所有的数据
+      departmentList: [],
       pageNum: 1,   // 当前的页码
       pageSize: 10,  // 每页显示的个数
       total: 0,
       username: null,
+      departmentName: null,
       fromVisible: false,
       form: {},
       user: JSON.parse(localStorage.getItem('xm-user') || '{}'),
@@ -136,6 +153,10 @@ export default {
     this.load(1)
   },
   methods: {
+    handleNodeClick(node) {
+      this.$set(this.form, 'departmentId', node.id)
+      this.$refs.selectTree.blur()
+    },
     changeStatus(row) {
       this.$request.put('staff/update', row).then(res => {
         if (res.code === '200') {  // 表示成功保存
@@ -218,9 +239,18 @@ export default {
         this.tableData = res.data?.list
         this.total = res.data?.total
       })
+
+      this.$request.get('/department/selectTree').then(res => {
+        this.departmentTree = res.data || []
+      })
+
+      this.$request.get('/department/selectAll').then(res => {
+        this.departmentList = res.data || []
+      })
     },
     reset() {
       this.username = null
+      this.departmentName = null
       this.load(1)
     },
     handleCurrentChange(pageNum) {

@@ -8,6 +8,7 @@ import com.example.common.enums.RoleEnum;
 import com.example.entity.Account;
 import com.example.exception.CustomException;
 import com.example.service.AdminService;
+import com.example.service.LogsService;
 import com.example.service.StaffService;
 import com.example.utils.ValidateCodeCache;
 import com.example.utils.ValidateCodeProperties;
@@ -112,6 +113,8 @@ public class WebController {
         else if (RoleEnum.STAFF.name().equals(account.getRole())) {
             account = staffService.login(account);
         }
+        //记录登录日志
+        LogsService.recordLog("用户登陆", "登陆", account.getUsername());
         return Result.success(account);
     }
 
@@ -126,6 +129,8 @@ public class WebController {
         }
         if (RoleEnum.STAFF.name().equals(account.getRole())) {
             staffService.register(account);
+            //记录注册日志
+            LogsService.recordLog("用户注册", "注册", account.getUsername());
         }
         return Result.success();
     }

@@ -32,6 +32,7 @@ const routes = [
       { path: 'back', name: 'Back', meta: { name: '退货查询' }, component: () => import('../views/manager/Back') },
       { path: 'sale', name: 'Sale', meta: { name: '商品销售' }, component: () => import('../views/manager/Sale') },
       { path: 'saleBack', name: 'SaleBack', meta: { name: '销售退货' }, component: () => import('../views/manager/SaleBack') },
+      { path: 'logs', name: 'Logs', meta: { name: '日志信息' }, component: () => import('../views/manager/Logs') },
     ]
   },
   {

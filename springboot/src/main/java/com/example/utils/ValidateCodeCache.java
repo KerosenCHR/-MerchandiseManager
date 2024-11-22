@@ -35,7 +35,7 @@ public class ValidateCodeCache {
         return codeCache.stream().anyMatch(cache -> cache.getKey().equals(key) && cache.getCode().equalsIgnoreCase(code));
     }
 
-    @Scheduled(fixedRate = 60000)  // 1分钟清理一次
+    @Scheduled(fixedRate = 180000)  // 3分钟清理一次
     public void task() {
         log.info("=======================开始清理验证码缓存，验证码集合缓存长度: + " + codeCache.size() + "=======================");
         List<CodeCache> codeList = codeCache.stream().filter(cache -> {

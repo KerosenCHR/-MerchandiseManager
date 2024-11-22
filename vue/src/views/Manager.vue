@@ -74,6 +74,7 @@
             <el-menu-item index="/admin">管理员信息</el-menu-item>
             <el-menu-item index="/staff">员工信息</el-menu-item>
             <el-menu-item index="/department">部门信息</el-menu-item>
+            <el-menu-item index="/logs">日志信息</el-menu-item>
           </el-submenu>
         </el-menu>
       </div>

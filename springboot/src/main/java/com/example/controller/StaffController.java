@@ -7,7 +7,9 @@ import com.example.common.enums.ResultCodeEnum;
 import com.example.common.enums.RoleEnum;
 import com.example.entity.Account;
 import com.example.entity.Staff;
+import com.example.service.LogsService;
 import com.example.service.StaffService;
+import com.example.utils.TokenUtils;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +29,9 @@ public class StaffController {
     @PostMapping("/add")
     public Result add(@RequestBody Staff staff) {
         staffService.add(staff);
+
+        Account currentUser = TokenUtils.getCurrentUser();
+        LogsService.recordLog("新增员工" + staff.getUsername(),"新增",currentUser.getUsername());
         return Result.success();
     }
 
@@ -35,6 +40,11 @@ public class StaffController {
      */
     @DeleteMapping("/delete/{id}")
     public Result deleteById(@PathVariable Integer id) {
+
+        Staff staff = staffService.selectById(id);
+        Account currentUser = TokenUtils.getCurrentUser();
+        LogsService.recordLog("删除员工" + staff.getUsername(),"删除",currentUser.getUsername());
+
         staffService.deleteById(id);
         return Result.success();
     }

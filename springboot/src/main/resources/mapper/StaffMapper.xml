@@ -10,17 +10,12 @@
 
     <select id="selectAll" resultType="com.example.entity.Staff">
         select
-        <include refid="Base_Column_List" />
+        staff.*, department.name as departmentName
         from staff
+        left join department on staff.department_id = department.id
         <where>
-            <if test="id != null"> and id= #{id}</if>
-            <if test="username != null"> and username like concat('%', #{username}, '%')</if>
-            <if test="password != null"> and password= #{password}</if>
-            <if test="name != null"> and name= #{name}</if>
-            <if test="phone != null"> and phone= #{phone}</if>
-            <if test="email != null"> and email= #{email}</if>
-            <if test="avatar != null"> and avatar= #{avatar}</if>
-            <if test="role != null"> and role= #{role}</if>
+            <if test="username != null"> and staff.username like concat('%', #{username}, '%')</if>
+            <if test="departmentName != null"> and department.name like concat('%', #{departmentName}, '%')</if>
         </where>
     </select>
 
